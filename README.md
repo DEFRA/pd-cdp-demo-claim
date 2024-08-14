@@ -1,4 +1,4 @@
-# CDP Node.js Backend Template
+# pd-cdp-demo-claim
 
 Core delivery platform Node.js Backend Template.
 
@@ -30,7 +30,7 @@ easier to use the Node Version Manager [nvm](https://github.com/creationix/nvm)
 To use the correct version of Node.js for this application, via nvm:
 
 ```bash
-cd cdp-node-backend-template
+cd pd-cdp-demo-claim
 nvm use
 ```
 
@@ -99,11 +99,11 @@ git config --global core.autocrlf false
 
 ### Postman
 
-A [Postman](https://www.postman.com/) collection and environment are available for making calls to the cdp-node-backend-template API.
+A [Postman](https://www.postman.com/) collection and environment are available for making calls to the pd-cdp-demo-claim API.
 Simply import the collection and environment into Postman.
 
-- [CDP Node Backend Template Postman Collection](postman/cdp-node-backend-template.postman_collection.json)
-- [CDP Node Backend Template Postman Environment](postman/cdp-node-backend-template.postman_environment.json)
+- [CDP Node Backend Template Postman Collection](postman/pd-cdp-demo-claim.postman_collection.json)
+- [CDP Node Backend Template Postman Environment](postman/pd-cdp-demo-claim.postman_environment.json)
 
 ## Development helpers
 
@@ -157,13 +157,13 @@ Helper methods are also available in `/src/helpers/mongo-lock.js`.
 Build:
 
 ```bash
-docker build --target development --no-cache --tag cdp-node-backend-template:development .
+docker build --target development --no-cache --tag pd-cdp-demo-claim:development .
 ```
 
 Run:
 
 ```bash
-docker run -e PORT=3001 -p 3001:3001 cdp-node-backend-template:development
+docker run -e PORT=3001 -p 3001:3001 pd-cdp-demo-claim:development
 ```
 
 ### Production image
@@ -171,13 +171,13 @@ docker run -e PORT=3001 -p 3001:3001 cdp-node-backend-template:development
 Build:
 
 ```bash
-docker build --no-cache --tag cdp-node-backend-template .
+docker build --no-cache --tag pd-cdp-demo-claim .
 ```
 
 Run:
 
 ```bash
-docker run -e PORT=3001 -p 3001:3001 cdp-node-backend-template
+docker run -e PORT=3001 -p 3001:3001 pd-cdp-demo-claim
 ```
 
 ### Docker Compose
