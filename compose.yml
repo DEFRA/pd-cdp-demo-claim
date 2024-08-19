@@ -2,9 +2,9 @@ version: '3.4'
 services:
   localstack:
     image: localstack/localstack:3.0.2
-    ports:
-      - '4566:4566' # LocalStack Gateway
-      - '4510-4559:4510-4559' # external services port range
+    # ports:
+    #   - '4566:4566' # LocalStack Gateway
+    #   - '4510-4559:4510-4559' # external services port range
     env_file:
       - 'compose/aws.env'
     environment:
@@ -23,13 +23,13 @@ services:
     networks:
       - cdp-tenant
 
-  redis:
-    image: redis:7.2.3-alpine3.18
-    ports:
-      - '6379:6379'
-    restart: always
-    networks:
-      - cdp-tenant
+  # redis:
+  #   image: redis:7.2.3-alpine3.18
+  #   ports:
+  #     - '6379:6379'
+  #   restart: always
+  #   networks:
+  #     - cdp-tenant
 
   mongodb:
     image: mongo:6.0.13
@@ -66,10 +66,13 @@ services:
   #   networks:
   #     - cdp-tenant
 
-  your-backend:
-    build: ./
+  pd-cdp-demo-claim:
+    build:
+      context: .
+      target: development
     ports:
-      - '3555:3555'
+      - '3001:3001'
+      - '9230:9229'
     links:
       - 'localstack:localstack'
       - 'mongodb:mongodb'
@@ -81,12 +84,14 @@ services:
     env_file:
       - 'compose/aws.env'
     environment:
-      PORT: 3555
+      PORT: 3001
       NODE_ENV: development
       LOCALSTACK_ENDPOINT: http://localstack:4566
       MONGO_URI: mongodb://mongodb:27017/
     networks:
       - cdp-tenant
+    volumes:
+      - './src:/home/node/src'
 
 ################################################################################
 
