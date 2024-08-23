@@ -1,5 +1,6 @@
 import { health } from '~/src/api/health/index.js'
 import { example } from '~/src/api/example/index.js'
+import { claim } from '~/src/api/claim/index.js'
 
 /**
  * @satisfies { import('@hapi/hapi').ServerRegisterPluginObject<*> }
@@ -13,6 +14,9 @@ const router = {
 
       // Application specific routes, add your own routes here.
       await server.register([example])
+
+      // Claim routes
+      await server.register([claim])
     }
   }
 }
