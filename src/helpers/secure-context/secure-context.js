@@ -27,10 +27,8 @@ const secureContext = {
 
         return secureContext
       }
-
-      server.decorate('server', 'secureContext', tls.createSecureContext, {
-        apply: true
-      })
+      // @ts-expect-error TS2339
+      server.decorate('server', 'secureContext', tls.createSecureContext())
     }
   }
 }
